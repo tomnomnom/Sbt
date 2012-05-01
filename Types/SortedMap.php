@@ -42,7 +42,8 @@ class SortedMap extends Map {
   }
 
   public function firstKey(){
-    return reset($this->keySet());
+    $keys = $this->keySet();
+    return reset($keys);
   }
 
   public function headMap($toKey){
@@ -63,7 +64,8 @@ class SortedMap extends Map {
   }
 
   public function lastKey(){
-    return end($this->keySet());
+    $keys = $this->keySet();
+    return end($keys);
   }
 
   public function subMap($fromKey, $toKey){
