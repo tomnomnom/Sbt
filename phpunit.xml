@@ -3,5 +3,8 @@
     <testsuite name="Types">
       <directory>Test/Unit/Types</directory>
     </testsuite>
+    <testsuite name="Routers">
+      <directory>Test/Unit/Routers</directory>
+    </testsuite>
   </testsuites>
 </phpunit>
