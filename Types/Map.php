@@ -1,5 +1,5 @@
 <?php
-namespace Sbt\DataStructures;
+namespace Sbt\Types;
 
 class Map {
   protected $entries = []; 

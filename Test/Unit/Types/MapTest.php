@@ -1,9 +1,9 @@
 <?php
-namespace Sbt\Test\Unit\DataStructures;
+namespace Sbt\Test\Unit\Types;
 
 class MapTest extends \PHPUnit_Framework_TestCase {
   public function testClear(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -16,7 +16,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testContainsKey(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -36,7 +36,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testContainsValue(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -60,7 +60,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
       'key1' => 'value1',
       'key2' => 'value2'
     ];
-    $map = new \Sbt\DataStructures\Map($entries);
+    $map = new \Sbt\Types\Map($entries);
 
     $this->assertEquals($entries, $map->entrySet(), "entrySet did not match input");
   }
@@ -70,14 +70,14 @@ class MapTest extends \PHPUnit_Framework_TestCase {
       'key1' => 'value1',
       'key2' => 'value2'
     ];
-    $map1 = new \Sbt\DataStructures\Map($entries);
-    $map2 = new \Sbt\DataStructures\Map($entries);
+    $map1 = new \Sbt\Types\Map($entries);
+    $map2 = new \Sbt\Types\Map($entries);
 
     $this->assertTrue(
       $map1->equals($map2), "Maps should match but don't"
     );
 
-    $map3 = new \Sbt\DataStructures\Map([
+    $map3 = new \Sbt\Types\Map([
       'key1' => 'value1'  
     ]);
 
@@ -87,7 +87,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testGet(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -98,7 +98,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testIsEmpty(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -115,14 +115,14 @@ class MapTest extends \PHPUnit_Framework_TestCase {
       'key1' => 'value1',
       'key2' => 'value2'
     ];
-    $map = new \Sbt\DataStructures\Map($entries);
+    $map = new \Sbt\Types\Map($entries);
 
     $keys = array_keys($entries);
     $this->assertEquals($keys, $map->keySet(), "Keys don't match expected keys");
   }
 
   public function testPut(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -134,12 +134,12 @@ class MapTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testPutAll(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
 
-    $subMap = new \Sbt\DataStructures\Map([
+    $subMap = new \Sbt\Types\Map([
       'key3' => 'value3',
       'key4' => 'value4'
     ]);
@@ -153,7 +153,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testRemove(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -165,7 +165,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
   }
 
   public function testSize(){
-    $map = new \Sbt\DataStructures\Map([
+    $map = new \Sbt\Types\Map([
       'key1' => 'value1',
       'key2' => 'value2'
     ]);
@@ -181,7 +181,7 @@ class MapTest extends \PHPUnit_Framework_TestCase {
       'key1' => 'value1',
       'key2' => 'value2'
     ];
-    $map = new \Sbt\DataStructures\Map($entries);
+    $map = new \Sbt\Types\Map($entries);
 
     $values = array_values($entries);
     $this->assertEquals($values, $map->values(), "Values don't match those expected");
