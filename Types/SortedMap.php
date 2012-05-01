@@ -4,6 +4,9 @@ namespace Sbt\Types;
 class SortedMap extends Map {
   protected $comparator = 'strcmp';
 
+  // A flag to determine the need to sort - purely for performance
+  protected $sorted = false;
+
   public function __construct(Array $entries = array(), Callable $comparator = null){
     if (!is_null($comparator)){
       $this->comparator = $comparator;
@@ -21,8 +24,16 @@ class SortedMap extends Map {
     );
   }
 
+  public function put($key, $value){
+    $this->sorted = false;
+    parent::put($key, $value);
+  }
+
   protected function sortEntrySet(){
-    uksort($this->entries, $this->comparator);
+    if (!$this->sorted){
+      uksort($this->entries, $this->comparator);
+      $this->sorted = true;
+    }
   }
 
   public function entrySet(){
