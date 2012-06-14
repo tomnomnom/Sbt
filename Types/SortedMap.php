@@ -18,12 +18,6 @@ class SortedMap extends Map {
     return $this->comparator;
   }
 
-  protected function compare($a, $b){
-    return call_user_func_array(
-      $this->comparator(), [$a, $b]
-    );
-  }
-
   public function put($key, $value){
     $this->sorted = false;
     parent::put($key, $value);
@@ -50,12 +44,13 @@ class SortedMap extends Map {
     $entries = $this->entrySet();
     $headEntries = [];
 
+    $comparator = $this->comparator;
     foreach ($entries as $key => $value){
-      if ($this->compare($key, $toKey) > 0) break;
+      if ($comparator($key, $toKey) > 0) break;
       $headEntries[$key] = $value;
     }
 
-    return new SortedMap($headEntries, $this->comparator());
+    return new SortedMap($headEntries, $this->comparator);
   }
 
   public function keySet(){
@@ -72,25 +67,27 @@ class SortedMap extends Map {
     $entries = $this->entrySet();
     $subEntries = [];
 
+    $comparator = $this->comparator;
     foreach ($entries as $key => $value){
-      if ($this->compare($key, $toKey) > 0) break;
-      if ($this->compare($key, $fromKey) < 0) continue;
+      if ($comparator($key, $toKey) > 0) break;
+      if ($comparator($key, $fromKey) < 0) continue;
       $subEntries[$key] = $value;
     }
 
-    return new SortedMap($subEntries, $this->comparator());
+    return new SortedMap($subEntries, $this->comparator);
   }
 
   public function tailMap($fromKey){
     $entries = $this->entrySet();
     $tailEntries = [];
 
+    $comparator = $this->comparator;
     foreach ($entries as $key => $value){
-      if ($this->compare($key, $fromKey) < 0) continue;
+      if ($comparator($key, $fromKey) < 0) continue;
       $tailEntries[$key] = $value;
     }
 
-    return new SortedMap($tailEntries, $this->comparator());
+    return new SortedMap($tailEntries, $this->comparator);
   }
 
   public function values(){
